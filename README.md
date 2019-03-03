@@ -6,6 +6,12 @@
 - Sample firebase config, replace it with your own.
 - Sample unit test with Jest and react-testing-library
 
+### Download
+
+```
+git clone https://github.com/AakashKB/gatsby_example_firebase_styled-components.git && cd gatsby_example_firebase_styled-components
+```
+
 ### Develop
 
 ```
