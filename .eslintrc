@@ -1,17 +1,36 @@
 {
-    "extends": ["airbnb", "prettier", "prettier/react"],
-    "parser": "babel-eslint",
-    "env": {
-      "browser": true,
-      "node": true
-    },
-    "globals": {
-      "tw": true
-    },
-    "rules": {
-      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-      "react/prop-types": [0],
-      "func-names": ["error", "always", { "generators": "never" }]
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react",
+    "plugin:jest/recommended"
+  ],
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest/globals": true
+  },
+  "globals": {
+    "tw": true
+  },
+  "plugins": ["jest"],
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prop-types": [1],
+    "linebreak-style": "off",
+    "func-names": ["error", "always", { "generators": "never" }],
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
     }
   }
-  
+}
