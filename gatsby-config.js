@@ -1,22 +1,17 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby starter Firebase',
+    title: 'Gatsby/Firebase starter app',
   },
   plugins: [
+    'gatsby-plugin-resolve-src',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-styled-components',
+    `gatsby-plugin-layout`,
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: `gatsby-plugin-typography`,
       options: {
-        name: 'gatsby-starter-firebase',
-        short_name: 'starter',
-        start_url: '/',
-        background_color: '#ffb200',
-        theme_color: '#663399',
-        display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+        pathToConfigModule: `src/res/typography`,
       },
     },
-    'gatsby-plugin-layout'
-    // 'gatsby-plugin-offline',
   ],
 }

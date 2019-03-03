@@ -1,43 +1,41 @@
 import React, { Component } from 'react'
+import initFirebase from 'services/firebase'
+import styled from 'styled-components'
 
-import getFirebase from '../firebase'
-import FirebaseContext from '../components/FirebaseContext'
-import SignIn from '../containers/SignIn'
-
+const Wrapper = styled.div`
+  margin: 3rem auto;
+  max-width: 650px;
+  padding: 0 1rem;
+`
 class Layout extends Component {
   state = {
-    firebase: null,
+    firebase: false,
     authenticated: false,
   }
 
   componentDidMount() {
-    const app = import('firebase/app')
-    const auth = import('firebase/auth')
-    const database = import('firebase/database')
+    const firebase = initFirebase() // Inits firebase for everypage
+    this.setState({ firebase })
 
-    Promise.all([app, auth, database]).then(values => {
-      const firebase = getFirebase(values[0])
-      this.setState({ firebase })
-
-      firebase.auth().onAuthStateChanged(user => {
-        if (!user) {
-          this.setState({ authenticated: false })
-        } else {
-          this.setState({ authenticated: true })
-        }
-      })
-    })
+    // firebase.auth().onAuthStateChanged(user => {
+    //   if (!user) {
+    //     this.setState({ authenticated: false })
+    //   } else {
+    //     this.setState({ authenticated: true })
+    //   }
+    // })
   }
 
   render = () => {
     const { firebase, authenticated } = this.state
-
+    const { children } = this.props
     if (!firebase) return null
-
+    //  Update to add signin
     return (
-      <FirebaseContext.Provider value={firebase}>
-        {authenticated ? this.props.children : <SignIn />}
-      </FirebaseContext.Provider>
+      <Wrapper>
+        <h3>Gatsby + Firebase</h3>
+        {authenticated ? children : children}
+      </Wrapper>
     )
   }
 }

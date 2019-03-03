@@ -1,35 +1,25 @@
 import React, { Component } from 'react'
-import { withFirebase } from '../components/FirebaseContext'
+import fetchtest from 'services/fetchtest'
 
-class FetchingExample extends Component {
+//  ToDO: add test
+export default class FetchingExample extends Component {
   state = {
     test: null,
   }
-  componentDidMount() {
-    const { firebase } = this.props
-    firebase
-      .database()
-      .ref('/test')
-      .once('value')
-      .then(snapshot => {
-        this.setState({
-          test: snapshot.val(),
-        })
-      })
+
+  async componentDidMount() {
+    this.setState({ test: await fetchtest() })
   }
+
   render() {
     const { test } = this.state
-
     if (!test) {
       return null
     }
-
     return (
       <div>
-        <h4>string test data : {test}</h4>
+        <h4>Firebase test data : {test}</h4>
       </div>
     )
   }
 }
-
-export default withFirebase(FetchingExample)

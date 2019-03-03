@@ -1,23 +1,14 @@
 import React from 'react'
+import Header from 'components/Header'
 import { Link } from 'gatsby'
+import FetchingExample from 'containers/fetchingExample'
 
-import Layout from '../components/layout'
-import FetchingExample from '../containers/FetchingExample'
-import SignOut from '../containers/SignOut'
-
-const IndexPage = () => (
-  <Layout>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby Firebase Starter.</p>
-    <p>Now go build something great with gatsby + firebase.</p>
-    <p>
-      See example data fetcehed from firebase: in{' '}
-      <code>FetchingExample.js</code>
-    </p>
+export default () => (
+  <div>
+    <Header>Hi people</Header>
+    <Link to="/page-2">Page-2</Link>
+    <p>This is React + Gatsby + Firebase + Styled-Components + Jest</p>
+    <p>Now go build something amazing!</p>
     <FetchingExample />
-    <Link to="/page-2/">Go to page 2</Link>
-    <SignOut />
-  </Layout>
+  </div>
 )
-
-export default IndexPage
